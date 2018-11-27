@@ -40,7 +40,8 @@ background_image = pygame.image.load("background.png")
 goblin_image = pygame.image.load("goblin.png") 
 hero_image = pygame.image.load("hero.png") 
 monster_image = pygame.image.load("monster.png")
-arrow_image = pygame.image.load("Arrow-copy.png")
+tick = 0
+# arrow_image = pygame.image.load("Arrow-copy.png")
 # heroLoc = {
 #     "x": 0,
 #     "y": 0
@@ -53,6 +54,9 @@ game_on = True
 game_start = False 
 #loop will run as long as boolean is true
 while game_on:
+    tick += 1
+    if (tick % 90 == 0):
+        badGuys.add(BadGuy())
     #in the game loop
     #listen for event and quit if the user closes window
     #========EVENT CHECKER=============================
@@ -110,7 +114,7 @@ while game_on:
         
         for arrow in arrows:
             arrow.update_me()
-            pygame_screen.blit(arrow_image,[arrow.x, arrow.y])
+            pygame_screen.blit(arrow.img,[arrow.x, arrow.y])
         
         #draw bad guys
         for badGuy in badGuys:
